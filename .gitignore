@@ -8,11 +8,11 @@ Pixel's Decide/[Oo]bj/
 Pixel's Decide/[Bb]uild/
 Pixel's Decide/[Bb]uilds/
 Pixel's Decide/[Ll]ogs/
-Pixel's Decide/[Uu]ser[Ss]ettings/
+Pixel's Decide/[Mm]emoryCaptures/
+Pixel's Decide/[Uu]serSettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
-Pixel's Decide/[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 Pixel's Decide/!/[Aa]ssets/**/*.meta
@@ -25,6 +25,7 @@ Pixel's Decide/[Aa]ssets/Plugins/Editor/JetBrains*
 
 # Visual Studio cache directory
 Pixel's Decide/.vs/
+Pixel's Decide/.vscode/
 
 # Gradle cache directory
 Pixel's Decide/.gradle/
@@ -47,17 +48,19 @@ Pixel's Decide/*.mdb
 Pixel's Decide/*.opendb
 Pixel's Decide/*.VC.db
 
+# Unity3D generated meta files
+Pixel's Decide/*.pidb.meta
+Pixel's Decide/*.pdb.meta
+Pixel's Decide/*.mdb.meta
+
+# Unity3D generated file on crash reports
+Pixel's Decide/sysinfo.txt
+
 # Builds
 Pixel's Decide/*.apk
-Pixel's Decide/*.aab
 Pixel's Decide/*.unitypackage
-
-# Crashlytics generated file
-Pixel's Decide/crashlytics-build.properties
-
-# Packed Addressables
-Pixel's Decide/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
 # Temporary auto-generated Android Assets
 Pixel's Decide/[Aa]ssets/[Ss]treamingAssets/aa.meta
 Pixel's Decide/[Aa]ssets/[Ss]treamingAssets/aa/*
+Pixel's Decide/crashlytics-build.properties
