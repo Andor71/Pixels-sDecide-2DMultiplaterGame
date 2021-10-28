@@ -10,13 +10,17 @@ public class Character_Movement : MonoBehaviour
     private float XCord ; 
     bool IsGrounded;
     bool canJump;
+    float jumpPressedTimer = 0.2f;
+    float jumpPressedTimerRemebered = 0;
+
+    float groundedTimer = 0.2f;
+    float groundedTimerRemebered = 0;
+
     public Collider2D collider;
     public Rigidbody2D rigidbody;
     public Transform feetPos;
     public LayerMask Ground;
-  
-
-
+    
     [Range(1,100)]
     public int speed = 1;
     public float jumpSpeed;
@@ -29,12 +33,19 @@ public class Character_Movement : MonoBehaviour
     void Update()
     {
 
+        jumpPressedTimerRemebered -= Time.deltaTime;
+        groundedTimerRemebered = -Time.deltaTime;
+
         //By hitting A or D in keyboard we can move our player.
         //Checking if Input is greater than 0 or not and flipping the player model by that value.
         XCord = Input.GetAxisRaw("Horizontal") * speed;
 
+        if(IsGrounded = Physics2D.OverlapCircle(feetPos.position, 0.1f, Ground)){
+            groundedTimerRemebered = groundedTimer;
+        }
+   
         if ( Input.GetKeyDown(KeyCode.W)){
-            canJump = true;
+            jumpPressedTimerRemebered = jumpPressedTimer;
         }
 
    }
@@ -55,11 +66,11 @@ public class Character_Movement : MonoBehaviour
         }
         transform.localScale = charecterScale;
 
-        IsGrounded = Physics2D.OverlapCircle(feetPos.position, 0.1f, Ground);
-        if (canJump && IsGrounded){
-            canJump = false;
-            Debug.Log("Space");
-            rigidbody.velocity = Vector2.up * jumpSpeed ;
+       
+        if (groundedTimerRemebered > 0 && jumpPressedTimerRemebered > 0){
+            jumpPressedTimerRemebered = 0;
+            groundedTimerRemebered = 0;
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x,jumpSpeed);
         }
    }
 }
