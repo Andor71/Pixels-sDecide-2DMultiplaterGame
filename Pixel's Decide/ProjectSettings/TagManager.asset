@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - BackGround
+  - Obsticles
+  - Ground
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obsticles
+    uniqueID: 3601874939
+    locked: 0
+  - name: Player
+    uniqueID: 2944167703
     locked: 0
