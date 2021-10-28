@@ -24,7 +24,6 @@ public class Character_Health : MonoBehaviour
             spriteRendererHP.enabled = true;
         }
         healthBar.localScale = new Vector3(currentHealth,1,1);
-      //  transform.localScale = healthBar.localScale;
     }
 
     public void gotHit(float valueOfDamage)
