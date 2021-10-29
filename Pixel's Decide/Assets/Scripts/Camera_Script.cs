@@ -8,6 +8,10 @@ public class Camera_Script : MonoBehaviour
     public float Speed;
     public Vector3 offsetCamera;
 
+    void Start()
+    {
+        player = transform.Find("Player");
+    }
 
     void LateUpdate()
     {
