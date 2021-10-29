@@ -16,7 +16,6 @@ public class Collision_Detector : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Spikes")){
-            Debug.Log("Hitted");
             character_Health_Script.gotHit(damageofSpike);
         }
     }
