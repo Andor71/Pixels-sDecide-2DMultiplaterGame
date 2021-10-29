@@ -29,7 +29,6 @@ public class Character_Health : MonoBehaviour
     public void gotHit(float valueOfDamage)
     {
         currentHealth -= valueOfDamage;
-        Debug.Log("Got Hitted, current Health: "+currentHealth);
     }
 
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class Character_Movement : MonoBehaviour
 {
     
+
+    Collider2D collider2d;
+    Rigidbody2D rigidbody2d;
     private float playerScale;
     private float distanceToGround;
     private float XCord ; 
@@ -16,8 +19,7 @@ public class Character_Movement : MonoBehaviour
     float groundedTimer = 0.2f;
     float groundedTimerRemebered = 0;
 
-    public Collider2D collider;
-    public Rigidbody2D rigidbody;
+
     public Transform feetPos;
     public LayerMask Ground;
     
@@ -27,6 +29,8 @@ public class Character_Movement : MonoBehaviour
 
     void Start()
     {
+        collider2d = GetComponent<Collider2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
         playerScale = transform.localScale.x;
     }
 
@@ -53,7 +57,7 @@ public class Character_Movement : MonoBehaviour
    {
        
         Vector3 move = new Vector3(1,0,0) * XCord;
-        rigidbody.velocity = move;
+        rigidbody2d.velocity = move;
 
         Vector3 charecterScale = transform.localScale;
         if (XCord < 0)
@@ -70,7 +74,7 @@ public class Character_Movement : MonoBehaviour
         if (groundedTimerRemebered > 0 && jumpPressedTimerRemebered > 0){
             jumpPressedTimerRemebered = 0;
             groundedTimerRemebered = 0;
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x,jumpSpeed);
+            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x,jumpSpeed);
         }
    }
 }
