@@ -22,11 +22,6 @@ public class Camera_Script : MonoBehaviour
             Vector3 delayedPosition = Vector3.Lerp(transform.position,locedPosition,Speed*Time.deltaTime);
             transform.position = delayedPosition;
         }
-        else
-        {
-            Debug.Log("There is no PLayer to lock to");
-        }
-
     }
 
 
