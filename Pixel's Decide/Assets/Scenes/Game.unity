@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -831,7 +831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9e5d6ee83744042b3d8c65154fefbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7924400435691837462, guid: 4098e34276b580d4f9bf88c6e92b4632, type: 3}
   Speed: 2
   offsetCamera: {x: 2, y: 2.5, z: -1}
 --- !u!20 &519420031
