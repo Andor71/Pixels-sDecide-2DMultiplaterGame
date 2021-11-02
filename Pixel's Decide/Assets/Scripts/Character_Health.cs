@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Character_Health : MonoBehaviour
+public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public float maxHealth = 0f;
+    
+    public int maxHealth = 0;
     float currentHealth;
     Transform healthBar;
     SpriteRenderer spriteRendererHP;
@@ -25,10 +27,24 @@ public class Character_Health : MonoBehaviour
         }
         healthBar.localScale = new Vector3(currentHealth,1,1);
     }
-
-    public void gotHit(float valueOfDamage)
+    [PunRPC]
+    public void gotHit(int valueOfDamage)
     {
         currentHealth -= valueOfDamage;
+        Debug.Log(this);
     }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentHealth);
+        }
+        else
+        {
+            currentHealth = (int)stream.ReceiveNext();
+        }
+    }
+
 
 }

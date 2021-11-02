@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Character_Attack : MonoBehaviour
+public class Character_Attack : MonoBehaviourPunCallbacks
 {
     PhotonView view;
 
@@ -44,7 +44,8 @@ public class Character_Attack : MonoBehaviour
                 foreach(Collider2D enemyCollider in enemysCollider){
 
                     if(enemyCollider.gameObject != this.gameObject){
-                        enemyCollider.GetComponent<Character_Health>().gotHit(damage);
+                       // enemyCollider.GetComponent<Character_Health>().gotHit(damage);
+                       enemyCollider.gameObject.GetPhotonView().RPC("gotHit",RpcTarget.All,damage);
                     }
                 }
             }
