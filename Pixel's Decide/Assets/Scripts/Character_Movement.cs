@@ -61,7 +61,8 @@ public class Character_Movement : MonoBehaviour
    {
         if(view.IsMine)
         {
-            Vector3 move = new Vector3(1,0,0) * XCord;
+            Vector2 move = new Vector2(1,0) * XCord;
+            move = new Vector2(move.x,rigidbody2d.velocity.y);
             rigidbody2d.velocity = move;
 
             Vector3 charecterScale = transform.localScale;

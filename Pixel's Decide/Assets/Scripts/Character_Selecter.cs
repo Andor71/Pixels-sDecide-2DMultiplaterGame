@@ -6,6 +6,7 @@ public class Character_Selecter : MonoBehaviour
 {
     public GameObject[] chracterPrefabs;
     int index = 0;
+
     void Start()
     {
         PlayerPrefs.SetString("CharacterTypeIndex","Normal");
@@ -33,8 +34,5 @@ public class Character_Selecter : MonoBehaviour
         }
         chracterPrefabs[index].SetActive(true);
         PlayerPrefs.SetString("CharacterTypeIndex",chracterPrefabs[index].name);
-        Debug.Log(chracterPrefabs[index]);
-        Debug.Log(chracterPrefabs[index].name);
-
     }
 }
