@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Character_Movement : MonoBehaviour
 {
-    
+    PhotonView view;
+
+    Collider2D collider2d;
+    Rigidbody2D rigidbody2d;
     private float playerScale;
     private float distanceToGround;
     private float XCord ; 
@@ -16,8 +20,7 @@ public class Character_Movement : MonoBehaviour
     float groundedTimer = 0.2f;
     float groundedTimerRemebered = 0;
 
-    public Collider2D collider;
-    public Rigidbody2D rigidbody;
+
     public Transform feetPos;
     public LayerMask Ground;
     
@@ -27,50 +30,57 @@ public class Character_Movement : MonoBehaviour
 
     void Start()
     {
+        collider2d = GetComponent<Collider2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
         playerScale = transform.localScale.x;
+        view = GetComponent<PhotonView>();
     }
 
     void Update()
     {
 
-        jumpPressedTimerRemebered -= Time.deltaTime;
-        groundedTimerRemebered = -Time.deltaTime;
+        if(view.IsMine)
+        {
+            jumpPressedTimerRemebered -= Time.deltaTime;
+            groundedTimerRemebered = -Time.deltaTime;
 
-        //By hitting A or D in keyboard we can move our player.
-        //Checking if Input is greater than 0 or not and flipping the player model by that value.
-        XCord = Input.GetAxisRaw("Horizontal") * speed;
+            //By hitting A or D in keyboard we can move our player.
+            //Checking if Input is greater than 0 or not and flipping the player model by that value.
+            XCord = Input.GetAxisRaw("Horizontal") * speed;
 
-        if(IsGrounded = Physics2D.OverlapCircle(feetPos.position, 0.1f, Ground)){
-            groundedTimerRemebered = groundedTimer;
+            if(IsGrounded = Physics2D.OverlapCircle(feetPos.position, 0.1f, Ground)){
+                groundedTimerRemebered = groundedTimer;
+            }
+    
+            if ( Input.GetKeyDown(KeyCode.W)){
+                jumpPressedTimerRemebered = jumpPressedTimer;
+            }
         }
-   
-        if ( Input.GetKeyDown(KeyCode.W)){
-            jumpPressedTimerRemebered = jumpPressedTimer;
-        }
-
    }
    void FixedUpdate()
    {
-       
-        Vector3 move = new Vector3(1,0,0) * XCord;
-        rigidbody.velocity = move;
-
-        Vector3 charecterScale = transform.localScale;
-        if (XCord < 0)
+        if(view.IsMine)
         {
-            charecterScale.x = -playerScale;
-        } 
-        if (XCord > 0)
-        {
-            charecterScale.x = playerScale;
-        }
-        transform.localScale = charecterScale;
+            Vector3 move = new Vector3(1,0,0) * XCord;
+            rigidbody2d.velocity = move;
 
-       
-        if (groundedTimerRemebered > 0 && jumpPressedTimerRemebered > 0){
-            jumpPressedTimerRemebered = 0;
-            groundedTimerRemebered = 0;
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x,jumpSpeed);
+            Vector3 charecterScale = transform.localScale;
+            if (XCord < 0)
+            {
+                charecterScale.x = -playerScale;
+            } 
+            if (XCord > 0)
+            {
+                charecterScale.x = playerScale;
+            }
+            transform.localScale = charecterScale;
+
+        
+            if (groundedTimerRemebered > 0 && jumpPressedTimerRemebered > 0){
+                jumpPressedTimerRemebered = 0;
+                groundedTimerRemebered = 0;
+                rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x,jumpSpeed);
+            }
         }
    }
 }
