@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Spikes
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2944167703
+    locked: 0
+  - name: Weapon
+    uniqueID: 262819799
     locked: 0
