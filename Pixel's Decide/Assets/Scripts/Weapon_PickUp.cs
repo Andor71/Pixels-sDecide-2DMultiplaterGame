@@ -71,7 +71,10 @@ public class Weapon_PickUp : MonoBehaviour
             {
                 //If Weapon dropped set its struct values acording to that.
                 weapons[index].weapon.SetActive(false);
-                GameObject temp = Instantiate(weapons[index].weapon,collider2DCharacter.transform.localPosition,Quaternion.identity);
+                GameObject temp = Instantiate(weaponsPrefabs[index],collider2DCharacter.transform.localPosition,Quaternion.identity);
+                temp.transform.localScale = new Vector3(1,1,1);
+                temp.transform.position += new Vector3(0,.5f,0); 
+                temp.SetActive(true);
                 alreadyHasWeapon = false;
                 weapons[index].setDealayed(true);
                 weapons[index].setTimer(droppedTimer);
