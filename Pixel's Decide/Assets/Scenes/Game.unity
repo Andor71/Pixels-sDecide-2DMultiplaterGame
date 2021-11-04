@@ -3117,6 +3117,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6985076442556778196, guid: 942c07f9317a2ac4d9300fc75fd29c53, type: 3}
+      propertyPath: damageAxe
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985076442556778196, guid: 942c07f9317a2ac4d9300fc75fd29c53, type: 3}
+      propertyPath: damageSpire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985076442556778196, guid: 942c07f9317a2ac4d9300fc75fd29c53, type: 3}
+      propertyPath: damageSword
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6985076443107880518, guid: 942c07f9317a2ac4d9300fc75fd29c53, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.85
@@ -7144,10 +7156,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8912646280217500213, guid: a1ab44094242a8d4f9abaf6fd2bd5bb2, type: 3}
       propertyPath: m_Name
-      value: spier
+      value: spear
       objectReference: {fileID: 0}
     - target: {fileID: 8912646280217500213, guid: a1ab44094242a8d4f9abaf6fd2bd5bb2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912646280217500215, guid: a1ab44094242a8d4f9abaf6fd2bd5bb2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8912646280217500215, guid: a1ab44094242a8d4f9abaf6fd2bd5bb2, type: 3}
@@ -20914,7 +20930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8912646280217500213, guid: a1ab44094242a8d4f9abaf6fd2bd5bb2, type: 3}
       propertyPath: m_Name
-      value: spier
+      value: spear
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1ab44094242a8d4f9abaf6fd2bd5bb2, type: 3}
