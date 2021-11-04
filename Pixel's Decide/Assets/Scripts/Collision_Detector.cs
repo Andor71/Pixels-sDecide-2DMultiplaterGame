@@ -7,7 +7,7 @@ public class Collision_Detector : MonoBehaviour
 
     Character_Health character_Health_Script;
 
-    public float damageofSpike = 5f; 
+    public int damageofSpike = 5; 
     void Start()
     {
         character_Health_Script = GetComponent<Character_Health>();
