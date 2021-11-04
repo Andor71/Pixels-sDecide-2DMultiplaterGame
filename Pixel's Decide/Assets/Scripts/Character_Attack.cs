@@ -16,11 +16,44 @@ public class Character_Attack : MonoBehaviourPunCallbacks
     public int damage;
     public float attackRange = 0.5f;
     public LayerMask whoToAttack;
+    public int damageAxe;
+    public int damageSpire;
+    public int damageSword;
 
     void Start()
     {
         Weapon = transform.Find("Weapon");
         view = GetComponent<PhotonView>();
+    }
+
+    public void updateDamage(string name)
+    {
+        if(view.IsMine){
+            switch(name)
+            {
+                case "axe":
+                case "axe(Clone)":
+                    damage = damageAxe;
+                break;
+
+                case "sword":
+                case "sword(Clone)":
+                    damage = damageSword;
+                break;
+
+                case "spear":
+                case "spear(Clone)":
+                    damage = damageSpire;
+                break;
+
+                case "None":
+                    damage = 0;
+                break;
+                default:
+                    damage = 1;
+                break;
+            }
+        }
     }
 
     void Update()
@@ -44,7 +77,6 @@ public class Character_Attack : MonoBehaviourPunCallbacks
                 foreach(Collider2D enemyCollider in enemysCollider){
 
                     if(enemyCollider.gameObject != this.gameObject){
-                       // enemyCollider.GetComponent<Character_Health>().gotHit(damage);
                        enemyCollider.gameObject.GetPhotonView().RPC("gotHit",RpcTarget.All,damage);
                     }
                 }
