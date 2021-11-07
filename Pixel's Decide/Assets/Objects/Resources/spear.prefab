@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 8912646280217500208}
   - component: {fileID: 8912646280217500215}
   - component: {fileID: 8912646280217500214}
+  - component: {fileID: 8374171438925724464}
+  - component: {fileID: -6449717654837225116}
   m_Layer: 0
-  m_Name: spier
+  m_Name: spear
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,3 +111,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2106409, y: 1.7066667}
   m_EdgeRadius: 0
+--- !u!114 &8374171438925724464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912646280217500213}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73c52d93640c7d47ab35e70c76ed059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
+  isPickedUp: 0
+--- !u!114 &-6449717654837225116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912646280217500213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

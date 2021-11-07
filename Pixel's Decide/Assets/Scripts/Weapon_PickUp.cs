@@ -22,11 +22,9 @@ public class Weapon_PickUp : MonoBehaviourPunCallbacks
 
     void Start()
     {
-
         view = GetComponent<PhotonView>();
         collider2DCharacter = GetComponent<Collider2D>();
         character_Attack = GetComponent<Character_Attack>();
-
     }
 
     void Update()
@@ -40,13 +38,14 @@ public class Weapon_PickUp : MonoBehaviourPunCallbacks
             {
                 if(alreadyHasWeapon)
                 {
-                    character_Attack.updateDamage("None");
 
                     //If Weapon dropped set its struct values acording to that.
                     weaponsPrefabs[index].SetActive(false);
-                    GameObject temp = Instantiate(weaponsPrefabs[index],collider2DCharacter.transform.localPosition,Quaternion.identity);
+                    GameObject temp = PhotonNetwork.Instantiate(weaponsPrefabs[index].name,collider2DCharacter.transform.localPosition,Quaternion.identity);
                     temp.transform.localScale = new Vector3(1,1,1);
                     temp.transform.position += new Vector3(0,.5f,0); 
+                    temp.GetComponent<Collider2D>().enabled = true;
+                    temp.GetComponent<Weapon_Script>().isPickedUp = false;
                     temp.SetActive(true);
 
                     alreadyHasWeapon = false;
@@ -64,6 +63,7 @@ public class Weapon_PickUp : MonoBehaviourPunCallbacks
                         case "spear(Clone)":
                             timerSpear = 1f;
                         break;
+                        
                         default:
                         break;
                     }
@@ -105,6 +105,7 @@ public class Weapon_PickUp : MonoBehaviourPunCallbacks
                         case "spear":
                             if(timerSpear < 0){
                                 pickUpWeapon(other.gameObject);
+                                //view.RPC("pickUpWeapon",RpcTarget.All,other.gameObject);
                             }
                         break;
                     }
@@ -114,15 +115,21 @@ public class Weapon_PickUp : MonoBehaviourPunCallbacks
         }
     }
 
+    [PunRPC]
     void pickUpWeapon(GameObject weaponToPickUp)
     {
-        Destroy(weaponToPickUp.gameObject);
-
+        //view.RPC("Destroy",RpcTarget.All,weaponToPickUp);
+        //Destroy(weaponToPickUp.gameObject);
+       // PhotonNetwork.Destroy(weaponToPickUp);
+        if(view.IsMine)
+        {
+            PhotonNetwork.Destroy(weaponToPickUp);
+        }
         weaponsPrefabs[index].SetActive(true);
 
-        alreadyHasWeapon = true;
+        weaponsPrefabs[index].GetComponent<Weapon_Script>().isPickedUp = true;
 
-        character_Attack.updateDamage(weaponToPickUp.gameObject.name);
+        alreadyHasWeapon = true;
 
     }
 

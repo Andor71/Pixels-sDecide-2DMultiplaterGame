@@ -6,12 +6,13 @@ using Photon.Pun;
 public class Character_Attack : MonoBehaviourPunCallbacks
 {
     PhotonView view;
-
+    Weapon_PickUp weapon_PickUp;
+    Animator animator;
     private float AttackTimer = 1f;
     private float AttackTimerRemembered = 0;
 
     bool AttackEnableb;
-    Transform Weapon;
+    Collider2D weaponCollider;
 
     public int damage;
     public float attackRange = 0.5f;
@@ -19,11 +20,13 @@ public class Character_Attack : MonoBehaviourPunCallbacks
     public int damageAxe;
     public int damageSpire;
     public int damageSword;
+    public bool attacking;
 
     void Start()
     {
-        Weapon = transform.Find("Weapon");
+        animator = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
+        weapon_PickUp = GetComponent<Weapon_PickUp>();
     }
 
     public void updateDamage(string name)
@@ -56,9 +59,31 @@ public class Character_Attack : MonoBehaviourPunCallbacks
         }
     }
 
+    public void updateWeaponCollider(Collider2D weaponColliderf)
+    {
+        weaponCollider = weaponColliderf;
+    }
+
+    public bool IsAttacking()
+    {
+        return attacking;
+    }
+
+    public void AttackStarted()
+    {
+        attacking = true;
+    }
+    public void AttackEnded()
+    {
+        attacking = false;
+    }
+
     void Update()
     {
-        if(view.IsMine){
+
+
+        if(view.IsMine)
+        {
             AttackTimerRemembered -= Time.deltaTime;
 
             if(AttackTimerRemembered < 0){
@@ -72,14 +97,14 @@ public class Character_Attack : MonoBehaviourPunCallbacks
             if(AttackEnableb && AttackTimerRemembered > 0){
                 AttackEnableb = false;
 
-                Collider2D[] enemysCollider = Physics2D.OverlapCircleAll(Weapon.transform.position,attackRange,whoToAttack);
 
-                foreach(Collider2D enemyCollider in enemysCollider){
+                animator.SetTrigger("SpearAttack");
+                // foreach(Collider2D enemyCollider in enemysCollider){
 
-                    if(enemyCollider.gameObject != this.gameObject){
-                       enemyCollider.gameObject.GetPhotonView().RPC("gotHit",RpcTarget.All,damage);
-                    }
-                }
+                //     if(enemyCollider.gameObject != this.gameObject){
+                //        enemyCollider.gameObject.GetPhotonView().RPC("gotHit",RpcTarget.All,damage);
+                //     }
+                // }
             }
         }
     }
