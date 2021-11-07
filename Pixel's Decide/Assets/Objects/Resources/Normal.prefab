@@ -313,6 +313,9 @@ MonoBehaviour:
   whoToAttack:
     serializedVersion: 2
     m_Bits: 64
+  damageAxe: 0
+  damageSpire: 0
+  damageSword: 0
 --- !u!114 &627915903075556560
 MonoBehaviour:
   m_ObjectHideFlags: 0
