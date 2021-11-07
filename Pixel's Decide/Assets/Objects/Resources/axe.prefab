@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8804115974985696040}
   - component: {fileID: 8804115974985696041}
   - component: {fileID: 8804115974985696046}
+  - component: {fileID: -6362838413734400446}
+  - component: {fileID: 8007101251883923817}
   m_Layer: 0
   m_Name: axe
   m_TagString: Weapon
@@ -109,3 +111,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.866056, y: 1.4318776}
   m_EdgeRadius: 0
+--- !u!114 &-6362838413734400446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804115974985696047}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73c52d93640c7d47ab35e70c76ed059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  isPickedUp: 0
+--- !u!114 &8007101251883923817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804115974985696047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
