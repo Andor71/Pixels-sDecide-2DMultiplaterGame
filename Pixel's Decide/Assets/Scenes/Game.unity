@@ -20955,6 +20955,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2757642268644373582, guid: 54f73044517071e45993cc5cac1d541a, type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 498199009170355107, guid: 54f73044517071e45993cc5cac1d541a, type: 3}
       propertyPath: m_Name
       value: sword
@@ -21077,6 +21081,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8007101251883923817, guid: 9c93d0aeea894a447a64e80ec983a770, type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8804115974985696040, guid: 9c93d0aeea894a447a64e80ec983a770, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -21134,6 +21142,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6449717654837225116, guid: a1ab44094242a8d4f9abaf6fd2bd5bb2, type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8912646280217500208, guid: a1ab44094242a8d4f9abaf6fd2bd5bb2, type: 3}
       propertyPath: m_RootOrder
       value: 8
