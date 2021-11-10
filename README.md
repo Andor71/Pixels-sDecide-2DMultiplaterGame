@@ -3,7 +3,7 @@
 # Software engineering project
 
 A platformer multiplayer game, where 2 players fight each other.
-Project is still in develope state.
+Project is still in development state.
 
 # Dependecies
 Unity 3.0.0
@@ -14,5 +14,5 @@ Choosing PC platfrom and hit build and run.
 Shortcut Ctrl+B
 
 # Authors
-Coder Pál Andor
+Cod Pál Andor.
 Design Dali Szilárd.
