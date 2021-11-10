@@ -5,14 +5,14 @@
 A platformer multiplayer game, where 2 players fight each other.
 Project is still in develope state.
 
-#Dependecies
+# Dependecies
 Unity 3.0.0
 
-#Installing:
+# Installing:
 Project can de builded with Unity.
 Choosing PC platfrom and hit build and run.
 Shortcut Ctrl+B
 
-#Authors
+# Authors
 Coder Pál Andor
 Design Dali Szilárd.
