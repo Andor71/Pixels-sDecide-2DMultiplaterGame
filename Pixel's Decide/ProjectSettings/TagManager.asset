@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Spikes
   - Weapon
+  - Entrance
   layers:
   - Default
   - TransparentFX

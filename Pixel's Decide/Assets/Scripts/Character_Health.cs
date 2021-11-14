@@ -31,7 +31,6 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
     public void gotHit(int valueOfDamage)
     {
         currentHealth -= valueOfDamage;
-        Debug.Log(this);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
