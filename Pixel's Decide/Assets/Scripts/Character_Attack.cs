@@ -14,13 +14,11 @@ public class Character_Attack : MonoBehaviourPunCallbacks
     bool AttackEnableb;
     Collider2D weaponCollider;
 
-    public int damage;
     public float attackRange = 0.5f;
     public LayerMask whoToAttack;
     public int damageAxe;
     public int damageSpire;
     public int damageSword;
-    public bool attacking;
 
     void Start()
     {
@@ -29,54 +27,12 @@ public class Character_Attack : MonoBehaviourPunCallbacks
         weapon_PickUp = GetComponent<Weapon_PickUp>();
     }
 
-    public void updateDamage(string name)
-    {
-        if(view.IsMine){
-            switch(name)
-            {
-                case "axe":
-                case "axe(Clone)":
-                    damage = damageAxe;
-                break;
-
-                case "sword":
-                case "sword(Clone)":
-                    damage = damageSword;
-                break;
-
-                case "spear":
-                case "spear(Clone)":
-                    damage = damageSpire;
-                break;
-
-                case "None":
-                    damage = 0;
-                break;
-                default:
-                    damage = 1;
-                break;
-            }
-        }
-    }
 
     public void updateWeaponCollider(Collider2D weaponColliderf)
     {
         weaponCollider = weaponColliderf;
     }
 
-    public bool IsAttacking()
-    {
-        return attacking;
-    }
-
-    public void AttackStarted()
-    {
-        attacking = true;
-    }
-    public void AttackEnded()
-    {
-        attacking = false;
-    }
 
     void Update()
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Weapon_PickUp : MonoBehaviourPunCallbacks
+public class Weapon_PickUp : MonoBehaviourPunCallbacks, IPunObservable
 {
     public GameObject[] weaponsPrefabs;
     Collider2D collider2DCharacter;
@@ -92,20 +92,21 @@ public class Weapon_PickUp : MonoBehaviourPunCallbacks
                     {
                         case "axe":
                             if(timerAxe < 0){
-                                pickUpWeapon(other.gameObject);
+                              //  pickUpWeapon(other.gameObject);
                             }
                         break;
 
                         case "sword":
                             if(timerSword < 0){
-                                pickUpWeapon(other.gameObject);
+                             //   pickUpWeapon(other.gameObject);
                             }
                         break;
 
                         case "spear":
                             if(timerSpear < 0){
                                 pickUpWeapon(other.gameObject);
-                                //view.RPC("pickUpWeapon",RpcTarget.All,other.gameObject);
+                                //view.RPC("DestoryWeapon",RpcTarget.MasterClient,other.gameObject);
+                                //view.RPC("pickUpWeapon",RpcTarget.MasterClient);
                             }
                         break;
                     }
@@ -114,8 +115,7 @@ public class Weapon_PickUp : MonoBehaviourPunCallbacks
             }
         }
     }
-
-    [PunRPC]
+   [PunRPC]
     void pickUpWeapon(GameObject weaponToPickUp)
     {
         //view.RPC("Destroy",RpcTarget.All,weaponToPickUp);
@@ -143,5 +143,30 @@ public class Weapon_PickUp : MonoBehaviourPunCallbacks
             }
         }
         return -1;
+    }
+    
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting)
+        {
+            // for(int i = 0 ; i < weaponsPrefabs.Length ; i++)
+            // {
+            //     stream.SendNext(weaponsPrefabs[i].active);
+            // }
+            stream.SendNext(weaponsPrefabs[0].active);
+            stream.SendNext(weaponsPrefabs[1].active);
+            stream.SendNext(weaponsPrefabs[2].active);
+            
+        }
+        else
+        {
+            // for(int i = 0 ; i < weaponsPrefabs.Length ; i++)
+            // {
+            //    weaponsPrefabs[i].SetActive((bool)stream.ReceiveNext());
+            // }
+            weaponsPrefabs[0].SetActive((bool)stream.ReceiveNext());
+            weaponsPrefabs[1].SetActive((bool)stream.ReceiveNext());
+            weaponsPrefabs[2].SetActive((bool)stream.ReceiveNext());
+        }
     }
 }
