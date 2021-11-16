@@ -8,6 +8,7 @@ TagManager:
   - Spikes
   - Weapon
   - Entrance
+  - Heal
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,15 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 2111364931
+    locked: 0
+  - name: Arena
+    uniqueID: 1972866993
+    locked: 0
+  - name: Ground
+    uniqueID: 3785165015
     locked: 0
   - name: Obsticles
     uniqueID: 3601874939
