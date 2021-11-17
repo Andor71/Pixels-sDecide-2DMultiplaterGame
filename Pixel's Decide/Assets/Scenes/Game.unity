@@ -7783,6 +7783,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1040049283552034928, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040049283552034928, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.42
+      objectReference: {fileID: 0}
     - target: {fileID: 1199616744528825025, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
       propertyPath: sceneViewId
       value: 3
@@ -7799,9 +7807,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Normal
       objectReference: {fileID: 0}
+    - target: {fileID: 5122102820735311423, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251962417755801991, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 84b7ef0d8f6cf2d44acf79599f2d6fbd, type: 3}
+    - target: {fileID: 6826632049207678264, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_Size.x
+      value: 3.4647582
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826632049207678264, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_Size.y
+      value: 6.3902245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826632049207678264, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.18873721
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826632049207678264, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.8023101
+      objectReference: {fileID: 0}
     - target: {fileID: 7110083023695765988, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7110083023695765988, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7110083023695765988, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7110083023695765988, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7847,5 +7887,6 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5122102820735311412, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 648339f29cbd2854c9bee2eaaac55a25, type: 3}
