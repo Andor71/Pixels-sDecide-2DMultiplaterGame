@@ -7,6 +7,8 @@ public class Character_Movement : MonoBehaviour
 {
     PhotonView view;
 
+    Animator animator;
+
     Collider2D collider2d;
     Rigidbody2D rigidbody2d;
     private float playerScale;
@@ -33,7 +35,8 @@ public class Character_Movement : MonoBehaviour
         collider2d = GetComponent<Collider2D>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         playerScale = transform.localScale.x;
-        view = GetComponent<PhotonView>();
+        view = GetComponent<PhotonView>(); 
+        animator=GetComponent<Animator>();
     }
 
     void Update()
@@ -47,6 +50,15 @@ public class Character_Movement : MonoBehaviour
             //By hitting A or D in keyboard we can move our player.
             //Checking if Input is greater than 0 or not and flipping the player model by that value.
             XCord = Input.GetAxisRaw("Horizontal") * speed;
+
+            if(XCord != 0){
+                animator.SetBool("is_running",true);
+
+            }
+            else{
+                animator.SetBool("is_running",false);
+
+            }
 
             if(IsGrounded = Physics2D.OverlapCircle(feetPos.position, 0.1f, Ground)){
                 groundedTimerRemebered = groundedTimer;
