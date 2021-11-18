@@ -53,23 +53,31 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
             {
                 if(Time.time > timeRGlobalDamage){
                     timeRGlobalDamage = Time.time + timeGlobalDamage;
-                    view.RPC("gotHit",RpcTarget.All,globalDamageDamage);
+                    gotHit(5);
                 }
             }
         }
     }
 
-    [PunRPC]
     public void gotHit(int valueOfDamage)
     {
-        Debug.Log("Got Hit");
-        currentHealth -= valueOfDamage;
+        photonView.RPC("RPCgotHit",RpcTarget.AllBuffered,valueOfDamage);
     }
 
     [PunRPC]
+    public void RPCgotHit(int valueOfDamage)
+    {
+        currentHealth -= valueOfDamage;
+    }
+
     public void Heal()
     {
-        Debug.Log("Healed");
+        photonView.RPC("RPCHeal",RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RPCHeal()
+    {
         currentHealth = maxHealth;
     }
 
