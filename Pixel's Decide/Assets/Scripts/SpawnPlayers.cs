@@ -9,9 +9,11 @@ public class SpawnPlayers : MonoBehaviour
     public GameObject spawnPoint;
     Camera_Script camera_Script;
     GameObject characterToSpawn;
-    
+    UI uI;
+
     void Start()
-    {
+    {   
+        uI = GameObject.Find("UI").GetComponent<UI>();
         camera_Script = GameObject.Find("PlayerCamera").GetComponent<Camera_Script>();   
     }
 
@@ -23,6 +25,7 @@ public class SpawnPlayers : MonoBehaviour
             player = GameObject.Find("Normal");
         }
         camera_Script.getPLayer(player.transform);
+        uI.UpdatePlayerCounter();
     }
 
     GameObject getPrefabByName(string cName){

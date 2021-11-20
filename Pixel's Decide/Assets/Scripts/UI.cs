@@ -8,7 +8,6 @@ public class UI : MonoBehaviourPunCallbacks
 {
     GameManager gameManager;
     GameObject characterSelecterPanel;
-    public Button leaveButton;
     public Text playerCounter;
 
 
@@ -27,6 +26,6 @@ public class UI : MonoBehaviourPunCallbacks
 
     public void UpdatePlayerCounter()
     {
-        
+        playerCounter.text = "players" + PhotonNetwork.CurrentRoom.PlayerCount + "-" + PhotonNetwork.CurrentRoom.MaxPlayers;
     }
 }

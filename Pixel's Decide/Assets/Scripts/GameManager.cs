@@ -8,9 +8,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public ParticleSystem particlesystem;
+    UI uI;
 
     void Start()
     {
+        uI = GameObject.Find("UI").GetComponent<UI>();
         particlesystem = GameObject.Find("ArrowRain").GetComponent<ParticleSystem>();
         particlesystem.Stop();
     }
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene("Lobby");
         PhotonNetwork.LeaveRoom();
-      
+        uI.UpdatePlayerCounter();
     }
 
     public override void OnConnectedToMaster()
