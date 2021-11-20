@@ -56,12 +56,10 @@ public class Collision_Detector : MonoBehaviourPunCallbacks
         
             if(view.IsMine)
             {
-                //photonView.RPC("SetGlobalDamage",RpcTarget.AllBuffered);  
-                //globalDamage = true;
-
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
                 {   
                     player.GetPhotonView().RPC("SetGlobalDamage",RpcTarget.AllBuffered);
+    
                 }
                 character_Health_Script.stayingInArena = true;
                 character_Attack_Script.enabled = true;

@@ -14,9 +14,9 @@ public class Character_Selecter : MonoBehaviour
     
     public void NextCharacter(int arrowIndex)
     {
+        Debug.Log(arrowIndex);
         chracterPrefabs[index].SetActive(false);
         //0 Left Arrow , 1 Right Arrow
-        Debug.Log(chracterPrefabs.Length);
         if(arrowIndex == 0)
         {
             index --;

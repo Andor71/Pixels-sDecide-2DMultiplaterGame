@@ -15,6 +15,7 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
     public bool stayingInArena = false;
     Transform healthBar;
     SpriteRenderer spriteRendererHP;
+    GameManager gameManager;
     Collision_Detector collision_Detector;
 
     void Start()
@@ -26,6 +27,7 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
         collision_Detector = GetComponent<Collision_Detector>();
         view = GetComponent<PhotonView>();
         healthBar.localScale = new Vector3(currentHealth,2,1);
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -49,8 +51,19 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
 
 
         if(view.IsMine){
+            
+            if(stayingInArena){
+                gameManager.StopArrowRain();
+            }
+
             if(collision_Detector.getGlobalDamage() && !stayingInArena)
             {
+                if(gameManager.particlesystem.isStopped){
+                    gameManager.StartArrowRain();
+                }
+                if(gameManager.particlesystem.isPlaying && stayingInArena){
+                    gameManager.StopArrowRain();
+                }
                 if(Time.time > timeRGlobalDamage){
                     timeRGlobalDamage = Time.time + timeGlobalDamage;
                     gotHit(5);

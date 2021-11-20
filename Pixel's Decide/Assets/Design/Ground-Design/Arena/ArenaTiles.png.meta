@@ -80,6 +80,12 @@ TextureImporter:
   - first:
       213: 631490095087332558
     second: ArenaTiles_25
+  - first:
+      213: -6037918676561919373
+    second: ArenaTiles_26
+  - first:
+      213: -5778851153399977543
+    second: ArenaTiles_27
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -110,7 +116,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -701,6 +707,48 @@ TextureImporter:
       bones: []
       spriteID: eccabdc45e083c800800000000000000
       internalID: 631490095087332558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_26
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37284d434f0053ca0800000000000000
+      internalID: -6037918676561919373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArenaTiles_27
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9ecbf5e756dcfa0800000000000000
+      internalID: -5778851153399977543
       vertices: []
       indices: 
       edges: []

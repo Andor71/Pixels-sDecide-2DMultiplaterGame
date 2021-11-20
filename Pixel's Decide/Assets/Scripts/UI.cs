@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class UI : MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+public class UI : MonoBehaviourPunCallbacks
 {
-    GameObject startMenuPanel;
     GameManager gameManager;
+
+    public Button leaveButton;
+    public Text playerCounter;
+
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        startMenuPanel = GameObject.Find("StartMenu");
+
+
     }
 
-    public void StartGame()
+    public void OnCLickLeaveRoom(){
+        gameManager.LeaveRoom();
+        
+    }
+
+    public void UpdatePlayerCounter()
     {
-        startMenuPanel.SetActive(false);
-        gameManager.StartGame();
+        
     }
-
 }
