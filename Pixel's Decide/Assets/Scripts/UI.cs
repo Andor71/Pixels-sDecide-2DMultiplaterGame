@@ -7,7 +7,7 @@ using Photon.Realtime;
 public class UI : MonoBehaviourPunCallbacks
 {
     GameManager gameManager;
-
+    GameObject characterSelecterPanel;
     public Button leaveButton;
     public Text playerCounter;
 
@@ -15,13 +15,14 @@ public class UI : MonoBehaviourPunCallbacks
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
+        characterSelecterPanel = GameObject.Find("CharacterSelect");
 
     }
 
     public void OnCLickLeaveRoom(){
+  
         gameManager.LeaveRoom();
-        
+        characterSelecterPanel.SetActive(false);
     }
 
     public void UpdatePlayerCounter()

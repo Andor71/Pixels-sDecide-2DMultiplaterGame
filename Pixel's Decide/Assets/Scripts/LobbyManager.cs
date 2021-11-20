@@ -9,11 +9,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 {
     public InputField roomInputField;
     Text roomName;
-    public GameObject createPanel;
-    public GameObject characterSelecterPanel;
-
     public RoomItem roomItemPrefab;
-
     List<RoomItem> roomItemList = new List<RoomItem>();
     public Transform contentObject;
 
@@ -34,12 +30,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
     public override void OnJoinedRoom()
-    {
-        createPanel.SetActive(false);
-        characterSelecterPanel.SetActive(true);
-    }
-
-    public void OnClickJoinGameScene()
     {
         PhotonNetwork.LoadLevel("Game");
     }
@@ -87,8 +77,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-        createPanel.SetActive(true);
-        characterSelecterPanel.SetActive(false);
     }
 
     public override void OnConnectedToMaster()
