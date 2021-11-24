@@ -21,7 +21,6 @@ public class RoomItem : MonoBehaviour
         roomName.text = _roomName+":"+playerCount+"-"+ MaxPlayers;
     }
 
-
     public void OnCLickItem(){
         manager.JoinRoom(roomNameInfo);
     }

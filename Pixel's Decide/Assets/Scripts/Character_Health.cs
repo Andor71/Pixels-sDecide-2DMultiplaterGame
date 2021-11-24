@@ -74,6 +74,7 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
     }
+    
     [PunRPC]
     public void Die()
     {
