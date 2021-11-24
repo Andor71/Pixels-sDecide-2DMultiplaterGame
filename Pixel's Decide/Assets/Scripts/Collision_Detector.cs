@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class Collision_Detector : MonoBehaviourPunCallbacks
 {
@@ -14,6 +15,8 @@ public class Collision_Detector : MonoBehaviourPunCallbacks
     Camera cameraPlayer;
     Camera cameraArena;
     bool globalDamage;
+
+    GameObject cheeseCake;
 
     public int damageofSpike = 5; 
     public int spikeForce = 5;
@@ -28,6 +31,7 @@ public class Collision_Detector : MonoBehaviourPunCallbacks
         view = GetComponent<PhotonView>();
         arenaScripts = GameObject.Find("Arena").GetComponent<ArenaScripts>();
         entrance = GameObject.Find("Left").GetComponent<Collider2D>();
+        cheeseCake = GameObject.Find("CheeseCake");
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -40,29 +44,32 @@ public class Collision_Detector : MonoBehaviourPunCallbacks
         }
         if(other.gameObject.CompareTag("Heal"))
         {
-            Destroy(other.gameObject);
-            other.gameObject.GetPhotonView().RPC("Heal",RpcTarget.All);
-           // character_Health_Script.Heal();
-        }
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.gameObject.CompareTag("Entrance")){
+            GetComponent<Character_Health>().Heal();
+
+            if(cheeseCake.GetPhotonView().Owner != view.Owner){
+                cheeseCake.GetPhotonView().TransferOwnership(view.Owner);
+            }
+            PhotonNetwork.Destroy(other.gameObject);
             
+        }
+        if(other.gameObject.CompareTag("Entrance")){
+        
             if(view.IsMine)
             {
-                view.RPC("SetGlobalDamage",RpcTarget.All);  
+                foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+                {   
+                    player.GetPhotonView().RPC("SetGlobalDamage",RpcTarget.AllBuffered);
+    
+                }
                 character_Health_Script.stayingInArena = true;
-                entrance.isTrigger = false;
-               // entrance.usedByEffector = true;
                 character_Attack_Script.enabled = true;
                 arenaScripts.entered = true;
                 cameraPlayer.enabled = false;
                 cameraArena.enabled = true;
             }
         }
-        
     }
+
     [PunRPC]
     public void SetGlobalDamage()
     {
@@ -71,6 +78,4 @@ public class Collision_Detector : MonoBehaviourPunCallbacks
     public bool getGlobalDamage(){
         return globalDamage;
     }
-
-
 }

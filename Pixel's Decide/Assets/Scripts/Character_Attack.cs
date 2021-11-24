@@ -6,13 +6,15 @@ using Photon.Pun;
 public class Character_Attack : MonoBehaviourPunCallbacks
 {
     PhotonView view;
-    Weapon_PickUp weapon_PickUp;
     Animator animator;
     private float AttackTimer = 1f;
     private float AttackTimerRemembered = 0;
 
     bool AttackEnableb;
     Collider2D weaponCollider;
+
+    //Test
+    GameObject weapon;
 
     public float attackRange = 0.5f;
     public LayerMask whoToAttack;
@@ -24,7 +26,7 @@ public class Character_Attack : MonoBehaviourPunCallbacks
     {
         animator = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
-        weapon_PickUp = GetComponent<Weapon_PickUp>();
+        weapon = GameObject.Find("WeaponSlot");
     }
 
 
@@ -53,14 +55,11 @@ public class Character_Attack : MonoBehaviourPunCallbacks
             if(AttackEnableb && AttackTimerRemembered > 0){
                 AttackEnableb = false;
 
-
-                animator.SetTrigger("SpearAttack");
-                // foreach(Collider2D enemyCollider in enemysCollider){
-
-                //     if(enemyCollider.gameObject != this.gameObject){
-                //        enemyCollider.gameObject.GetPhotonView().RPC("gotHit",RpcTarget.All,damage);
-                //     }
-                // }
+                Collider2D[] targets =Physics2D.OverlapCircleAll(weapon.transform.position,attackRange,whoToAttack);
+                foreach (Collider2D target in targets)
+                {
+                    target.gameObject.GetComponent<Character_Health>().gotHit(5);
+                }
             }
         }
     }
