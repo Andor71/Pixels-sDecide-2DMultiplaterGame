@@ -8,11 +8,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public ParticleSystem particlesystem;
+    Character_Health character_Health;
     UI uI;
     GameObject gate;
     GameObject lose; 
     GameObject win;
     int activePlayers;
+    PhotonView view;
+
+
     void Start()
     {
         uI = GameObject.Find("UI").GetComponent<UI>();
@@ -20,7 +24,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         particlesystem.Stop();
         gate = GameObject.Find("Gates");
         lose = GameObject.Find("Lose");
+        lose.SetActive(false);
         win = GameObject.Find("Win");
+        win.SetActive(false);
+        view =  gate.GetComponent<PhotonView>();
     }
     public void SetLose()
     {
@@ -30,7 +37,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         win.SetActive(true);
     }
-
     public void StartArrowRain()
     {
         particlesystem.Play();
@@ -38,27 +44,41 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void StopArrowRain()
     {
         particlesystem.Stop();
-    }  
-
+    }
     public void StartLevel()
     {
-        gate.SetActive(false);
         activePlayers = PhotonNetwork.CurrentRoom.PlayerCount;
+        if(view.Owner.IsMasterClient){
+            PhotonNetwork.Destroy(gate);
+        }
     }
-    
     public void SomeoneDied()
     {
         activePlayers--;
         if(activePlayers == 1){
             SomeoneWon();
+        }else{
+            StartCoroutine(LeaveOnDie());
         }
+        
     }
-
+    public IEnumerator LeaveOnDie(){
+        yield return new WaitForSeconds(5f);
+        LeaveRoom();
+    }
     public void SomeoneWon()
     {
-        if(lose.active != true){
-            SetWin();
+        if(GameObject.FindGameObjectWithTag("Player").GetComponent<PhotonView>().IsMine){
+            if(character_Health == null){
+                character_Health = GameObject.FindGameObjectWithTag("Player").GetComponent<Character_Health>();
+            }
+            if(character_Health.stilAlive){
+                SetWin();
+            }else{
+                SetLose();
+            }
         }
+        StartCoroutine(LeaveOnDie());
     }
 
     public void LeaveRoom()
@@ -66,6 +86,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("Lobby");
         PhotonNetwork.LeaveRoom();
         uI.UpdatePlayerCounter();
+        uI.OnLeaveRoomSetActiveCharacterPanel();
     }
 
     public override void OnConnectedToMaster()
