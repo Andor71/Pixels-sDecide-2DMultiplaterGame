@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1021298856132842777}
   - component: {fileID: 1021298856132842776}
   - component: {fileID: 1021298856132842854}
+  - component: {fileID: -6763431764641366304}
   m_Layer: 6
   m_Name: Normal
   m_TagString: Player
@@ -164,6 +165,7 @@ MonoBehaviour:
   globalDamageDamage: 1
   timeGlobalDamage: 5
   stayingInArena: 0
+  stilAlive: 1
 --- !u!114 &1021298856132842779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +276,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.18873721, y: 0.8023101}
   m_Size: {x: 3.4647582, y: 6.3902245}
   m_Direction: 0
+--- !u!114 &-6763431764641366304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021298856132842853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 0
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1021298856530523382
 GameObject:
   m_ObjectHideFlags: 0
