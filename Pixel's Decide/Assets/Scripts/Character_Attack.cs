@@ -24,6 +24,7 @@ public class Character_Attack : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        
         animator = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
         weapon = GameObject.Find("WeaponSlot");
@@ -49,6 +50,7 @@ public class Character_Attack : MonoBehaviourPunCallbacks
             }
 
             if(Input.GetKeyDown(KeyCode.Space)&&AttackEnableb){
+                animator.SetTrigger("attack");
                 AttackTimerRemembered = AttackTimer;
             }
 

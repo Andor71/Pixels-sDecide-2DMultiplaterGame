@@ -65,6 +65,7 @@ public class Character_Movement : MonoBehaviour
             }
     
             if ( Input.GetKeyDown(KeyCode.W)){
+                animator.SetBool("is_jumping",true);
                 jumpPressedTimerRemebered = jumpPressedTimer;
             }
         }
@@ -93,6 +94,7 @@ public class Character_Movement : MonoBehaviour
                 jumpPressedTimerRemebered = 0;
                 groundedTimerRemebered = 0;
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x,jumpSpeed);
+                animator.SetBool("is_jumping",false);
             }
         }
    }
