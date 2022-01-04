@@ -38,7 +38,7 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
             spriteRendererHP.enabled = true;
             spriteRendererHP.color = Color.green;
         }
-        healthBar.localScale = new Vector3(currentHealth/10,1,1);
+        healthBar.localScale = new Vector3(currentHealth/20,1,1);
         
         if(currentHealth < maxHealth*50/100){
             spriteRendererHP.color = Color.yellow;

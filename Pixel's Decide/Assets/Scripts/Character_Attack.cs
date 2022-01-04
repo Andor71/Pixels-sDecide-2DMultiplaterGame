@@ -49,6 +49,7 @@ public class Character_Attack : MonoBehaviourPunCallbacks
             }
 
             if(Input.GetKeyDown(KeyCode.Space)&&AttackEnableb){
+                animator.SetTrigger("attack");
                 AttackTimerRemembered = AttackTimer;
             }
 
