@@ -54,11 +54,18 @@ public class Character_Attack : MonoBehaviourPunCallbacks
 
             if(AttackEnableb && AttackTimerRemembered > 0){
                 AttackEnableb = false;
-
+                Debug.Log("Hitting",this.gameObject);
                 Collider2D[] targets =Physics2D.OverlapCircleAll(weapon.transform.position,attackRange,whoToAttack);
-                foreach (Collider2D target in targets)
-                {
-                    target.gameObject.GetComponent<Character_Health>().gotHit(5);
+                // foreach (Collider2D target in targets)
+                // {
+                //     target.gameObject.GetComponent<Character_Health>().gotHit(5);
+                // }
+                foreach(Collider2D enemyCollider in targets){
+
+                    if(enemyCollider.gameObject != this.gameObject){
+                       Debug.Log(enemyCollider);
+                       enemyCollider.gameObject.GetPhotonView().RPC("RPCgotHit",RpcTarget.All,10);
+                    }
                 }
             }
         }
