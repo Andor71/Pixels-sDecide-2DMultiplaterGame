@@ -3,29 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Character_Attack : MonoBehaviour
+public class Character_Attack : MonoBehaviourPunCallbacks
 {
     PhotonView view;
-
+    Animator animator;
     private float AttackTimer = 1f;
     private float AttackTimerRemembered = 0;
 
     bool AttackEnableb;
-    Transform Weapon;
+    Collider2D weaponCollider;
 
-    public int damage;
+    //Test
+    GameObject weapon;
+
     public float attackRange = 0.5f;
     public LayerMask whoToAttack;
+    public int damageAxe;
+    public int damageSpire;
+    public int damageSword;
 
     void Start()
     {
-        Weapon = transform.Find("Weapon");
+        
+        animator = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
+        weapon = GameObject.Find("WeaponSlot");
     }
+
+
+    public void updateWeaponCollider(Collider2D weaponColliderf)
+    {
+        weaponCollider = weaponColliderf;
+    }
+
 
     void Update()
     {
-        if(view.IsMine){
+
+
+        if(view.IsMine)
+        {
             AttackTimerRemembered -= Time.deltaTime;
 
             if(AttackTimerRemembered < 0){
@@ -33,19 +50,17 @@ public class Character_Attack : MonoBehaviour
             }
 
             if(Input.GetKeyDown(KeyCode.Space)&&AttackEnableb){
+                animator.SetTrigger("attack");
                 AttackTimerRemembered = AttackTimer;
             }
 
             if(AttackEnableb && AttackTimerRemembered > 0){
                 AttackEnableb = false;
 
-                Collider2D[] enemysCollider = Physics2D.OverlapCircleAll(Weapon.transform.position,attackRange,whoToAttack);
-
-                foreach(Collider2D enemyCollider in enemysCollider){
-
-                    if(enemyCollider.gameObject != this.gameObject){
-                        enemyCollider.GetComponent<Character_Health>().gotHit(damage);
-                    }
+                Collider2D[] targets =Physics2D.OverlapCircleAll(weapon.transform.position,attackRange,whoToAttack);
+                foreach (Collider2D target in targets)
+                {
+                    target.gameObject.GetComponent<Character_Health>().gotHit(5);
                 }
             }
         }

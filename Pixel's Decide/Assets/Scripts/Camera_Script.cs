@@ -20,6 +20,7 @@ public class Camera_Script : MonoBehaviour
         {
             Vector3 locedPosition = player.position + offsetCamera;
             Vector3 delayedPosition = Vector3.Lerp(transform.position,locedPosition,Speed*Time.deltaTime);
+            delayedPosition.y = 2;
             transform.position = delayedPosition;
         }
     }

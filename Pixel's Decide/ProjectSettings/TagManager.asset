@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Obstacle
   - Spikes
+  - Weapon
+  - Entrance
+  - Heal
   layers:
   - Default
   - TransparentFX
@@ -43,9 +46,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 2111364931
+    locked: 0
+  - name: Arena
+    uniqueID: 1972866993
+    locked: 0
+  - name: Ground
+    uniqueID: 3785165015
+    locked: 0
+  - name: Particles
+    uniqueID: 2610123439
+    locked: 0
   - name: Obsticles
     uniqueID: 3601874939
     locked: 0
   - name: Player
     uniqueID: 2944167703
+    locked: 0
+  - name: Weapon
+    uniqueID: 262819799
     locked: 0

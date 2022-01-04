@@ -5,17 +5,20 @@ using UnityEngine;
 public class Character_Selecter : MonoBehaviour
 {
     public GameObject[] chracterPrefabs;
+    GameObject characterSelecterPanel;
+    SpawnPlayers spawnPlayers;
     int index = 0;
+
     void Start()
     {
-        PlayerPrefs.SetString("CharacterTypeIndex","Normal");
+        characterSelecterPanel = GameObject.Find("CharacterSelect");
+        spawnPlayers = GameObject.Find("SpawnPlayers").GetComponent<SpawnPlayers>();
     }
-    
+
     public void NextCharacter(int arrowIndex)
     {
         chracterPrefabs[index].SetActive(false);
         //0 Left Arrow , 1 Right Arrow
-        Debug.Log(chracterPrefabs.Length);
         if(arrowIndex == 0)
         {
             index --;
@@ -32,9 +35,12 @@ public class Character_Selecter : MonoBehaviour
             index = 0;
         }
         chracterPrefabs[index].SetActive(true);
-        PlayerPrefs.SetString("CharacterTypeIndex",chracterPrefabs[index].name);
-        Debug.Log(chracterPrefabs[index]);
-        Debug.Log(chracterPrefabs[index].name);
+    }
+
+    public void OnClickReady()
+    {
+        characterSelecterPanel.SetActive(false);
+        spawnPlayers.SpawnPlayerPrefab(chracterPrefabs[index].name);
 
     }
 }
