@@ -91,6 +91,7 @@ public class Character_Movement : MonoBehaviour
 
         
             if (groundedTimerRemebered > 0 && jumpPressedTimerRemebered > 0){
+                animator.SetBool("is_jumping",false);
                 jumpPressedTimerRemebered = 0;
                 groundedTimerRemebered = 0;
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x,jumpSpeed);
