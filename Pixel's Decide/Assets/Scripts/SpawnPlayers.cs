@@ -26,6 +26,7 @@ public class SpawnPlayers : MonoBehaviour
         }
         camera_Script.getPLayer(player.transform);
         uI.UpdatePlayerCounter();
+        uI.CheckIfRoomIsFull();
     }
 
     GameObject getPrefabByName(string cName){

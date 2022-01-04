@@ -18,6 +18,8 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
     GameManager gameManager;
     Collision_Detector collision_Detector;
 
+    public bool stilAlive = true;
+
     void Start()
     {
         healthBar = transform.Find("HealthBar");
@@ -49,9 +51,9 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
             spriteRendererHP.enabled = false;
         }
         if(currentHealth <= 0){
-           photonView.RPC("Die",RpcTarget.AllBuffered);
+            stilAlive = false;
+            photonView.RPC("Die",RpcTarget.AllBuffered);
         }
-
 
         if(view.IsMine){
             
@@ -78,16 +80,15 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void Die()
     {
-        gameManager.SetLose();
+       // gameManager.SetLose();
         gameManager.SomeoneDied();
         //Turn of Scripts
-        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<Character_Movement>().enabled = false;
         GetComponent<Character_Attack>().enabled = false;
         GetComponent<Character_Health>().enabled = false;
         
     }
-
 
     public void gotHit(int valueOfDamage)
     {
