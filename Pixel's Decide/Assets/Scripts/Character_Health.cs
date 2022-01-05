@@ -37,8 +37,8 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
         if(currentHealth < maxHealth){
             spriteRendererHP.enabled = true;
             spriteRendererHP.color = Color.green;
-        }
-        healthBar.localScale = new Vector3(currentHealth/20,1,1);
+        }//10
+        healthBar.localScale = new Vector3(currentHealth/50,.1f,.1f);
         
         if(currentHealth < maxHealth*50/100){
             spriteRendererHP.color = Color.yellow;
@@ -87,8 +87,8 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
         GetComponent<Character_Movement>().enabled = false;
         GetComponent<Character_Attack>().enabled = false;
         GetComponent<Character_Health>().enabled = false;
-        
     }
+
 
     public void gotHit(int valueOfDamage)
     {
@@ -98,6 +98,7 @@ public class Character_Health : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void RPCgotHit(int valueOfDamage)
     {
+        Debug.Log("Got hit");
         currentHealth -= valueOfDamage;
     }
 
